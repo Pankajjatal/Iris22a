@@ -16,7 +16,7 @@ import io.cucumber.java.Before;
 public class TestBase {
 	
 	
-	private static final Logger log=Logger.getLogger(TestBase.class);
+//	private static final Logger log=Logger.getLogger(TestBase.class);
 
 	/*@Parameters("browser-name")*/
 	/*@BeforeMethod*/
