@@ -23,11 +23,13 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class UIKeyword {
 
-	public static RemoteWebDriver driver;
+	public static WebDriver driver;
+	//public static RemoteWebDriver driver;
 
 	private static final Logger log = Logger.getLogger(UIKeyword.class);
 
-	public static void openBrowser(String browserName) {
+//	public static void openBrowser(String browserName) {
+	public static WebDriver openBrowser(String browserName) {
 
 		if (browserName.equalsIgnoreCase("Chrome")) {
 
@@ -53,6 +55,7 @@ public class UIKeyword {
 		}
 		System.out.println(browserName + " browser is launched successfully");
 		/* log.info(browserName + " browser is launched successfully"); */
+		return driver;
 	}
 
 	public static void launchUrl(String url) {
@@ -206,12 +209,10 @@ public class UIKeyword {
 	}
 
 	public static void enterText(String locatorType, String locatorValue, String text) {
-		// TODO Auto-generated method stub
 		getWebElement(locatorType, locatorValue).sendKeys(text);
 	}
 
 	public static List<String> getTexts(String locatorType, String locatorValue) {
-		// TODO Auto-generated method stub
 		getWebElement(locatorType, locatorValue);
 		return null;
 	}

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Suite" parallel="tests" thread-count="3">
+	<test name="Chrome">
+		<parameter name="browser-name" value="Chrome" />
+		<classes>
+			<class name="com.iris22a.ProductTests" />
+			<class name="com.iris22a.config.TestBase" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="Firefox">
+		<parameter name="browser-name" value="Firefox" />
+		<classes>
+			<class name="com.iris22a.ProductTests" />
+			<class name="com.iris22a.config.TestBase" />
+		</classes>
+	</test> <!-- Test -->
+	<test name="IE">
+		<parameter name="browser-name" value="IE" />
+		<classes>
+			<class name="com.iris22a.ProductTests" />
+			<class name="com.iris22a.config.TestBase" />
+		</classes>
+	</test> <!-- Test -->
+</suite> <!-- Suite -->

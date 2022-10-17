@@ -1,6 +1,7 @@
 package com.iris22a.config;
 
 import org.apache.commons.exec.environment.EnvironmentUtils;
+import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
@@ -14,32 +15,38 @@ import io.cucumber.java.After;
 import io.cucumber.java.Before;
 
 public class TestBase {
-	
-	
-//	private static final Logger log=Logger.getLogger(TestBase.class);
 
-	/*@Parameters("browser-name")*/
-	/*@BeforeMethod*/
-	/*public void setUp(@Optional String browserName) throws Exception {*/
-	
+	public WebDriver driver;
+	public ThreadLocal<WebDriver> thread = new ThreadLocal<WebDriver>();
+	// private static final Logger log=Logger.getLogger(TestBase.class);
+
+	/* @Parameters("browser-name") */
+	/* @BeforeMethod */
+	/* public void setUp(@Optional String browserName) throws Exception { */
+
 	@Before
+	// @BeforeMethod
 	public void setUp() throws Exception {
-		String brwsName=System.getProperty("browserName");
-		String browserName=Environment.BROWSER;
-		if(browserName==null) {
-			browserName="chrome";
+		String brwsName = System.getProperty("browserName");
+		String browserName = Environment.BROWSER;
+		if (browserName == null) {
+			browserName = "chrome";
 		}
 		if (browserName.isEmpty()) {
 			browserName = "chrome";
 			System.out.println("Setting default browser as chrome");
-			/*log.info("Setting default browser as chrome");*/
+			/* log.info("Setting default browser as chrome"); */
 		}
-		UIKeyword.openBrowser(browserName);
+		// UIKeyword.openBrowser(browserName);
+		this.driver = UIKeyword.openBrowser(browserName);
+		thread.set(this.driver);
 	}
 
-	@After
+	// @After
+	@AfterMethod
 	public void tearDownMethod() throws Exception {
-		UIKeyword.closeBrowser();
-		/*log.info("Browser is closed successfully");*/
+		// UIKeyword.closeBrowser();
+		thread.get().close();
+		/* log.info("Browser is closed successfully"); */
 	}
 }

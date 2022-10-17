@@ -19,8 +19,8 @@ import com.iris22a.util.Environment;
 import com.iris22a.util.PropUtil;
 import com.iris22a.util.WaitFor;
 
-/*public class ProductTests extends TestBase {*/
-	public class ProductTests extends TestBase {
+public class ProductTests extends TestBase {
+	/*public class ProductTests extends TestBase {*/
 	@Test
 	public void VerifySearchResultForPoloMen() throws AWTException, FileNotFoundException {
 
